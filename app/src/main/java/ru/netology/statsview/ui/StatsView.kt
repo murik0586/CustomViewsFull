@@ -96,6 +96,8 @@ class StatsView @JvmOverloads constructor(
             canvas.drawArc(oval, startFrom, angle, false, paint)
             startFrom += angle
         }
+        paint.color = colors[0]
+        canvas.drawPoint(center.x, center.y - radius, paint)
 
         canvas.drawText(
             "%.2f%%".format(data.sum() * 100 * smartStatsViewDivider(data.sum())),
