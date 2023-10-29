@@ -7,7 +7,6 @@ import android.graphics.PointF
 import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
-import androidx.core.content.res.TypedArrayUtils.getResourceId
 import androidx.core.content.withStyledAttributes
 import ru.netology.statsview.R
 import ru.netology.statsview.utils.AndroidUtils
@@ -73,7 +72,7 @@ class StatsView @JvmOverloads constructor(
 
     private fun randomColor() = Random.nextInt(0xFF000000.toInt(), 0xFFFFFFFF.toInt())
 
-    private fun smartStatsViewDivider(sum: Float): Float = sum.pow(-1)
+    private fun smartStatsViewDivider(sum: Float): Float = if (sum < 1) 1F else sum.pow(-1)
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         radius = min(w, h) / 2F - lineWidth / 2
